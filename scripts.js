@@ -13,3 +13,22 @@ gridDivs.forEach(gridDiv => {
         gridDiv.classList.add('hover');
     })
 });
+
+let userValueBtn = document.querySelector('.userValue');
+
+let userGridValue;
+
+function askUserForAValue(){
+        userGridValue = prompt(
+          "How big do you want the grid to be? (Max number is 100)",
+          "15"
+        );
+        while (userGridValue > 100) {
+          userGridValue = prompt(
+            "How big do you want the grid to be? (Max number is 100)",
+            "15");
+        }
+        console.log(userGridValue);
+}
+
+userValueBtn.addEventListener('click', askUserForAValue)
