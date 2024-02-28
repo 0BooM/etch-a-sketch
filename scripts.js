@@ -1,26 +1,35 @@
 // First Canvas
 let containerDiv = document.querySelector(".container");
-
 for (let i = 0; i < (16 * 16); ++i) {
     let gridDiv = document.createElement('div');
     gridDiv.classList.add('grid-div');  
     containerDiv.appendChild(gridDiv);
 }
-fillGridBackgroundByMovingMouse();
+
+function generateRandomFill(){
+    let hover = document.querySelector(".hover");
+    let randomFill = `rgb(${Math.round(Math.random() * 255)},${Math.round(
+      Math.random() * 255
+    )},${Math.round(Math.random() * 255)})`;
+    return randomFill;
+//     hover.style.backgroundColor = randomFill;
+ }
 
 function fillGridBackgroundByMovingMouse(){
     let gridDivs = document.querySelectorAll('.grid-div');
-
-    gridDivs.forEach(gridDiv => {
-        gridDiv.addEventListener('mousemove', () => {
-            gridDiv.classList.add('hover');
-        })
-    });
+        gridDivs.forEach((gridDiv) => {
+          gridDiv.addEventListener("mouseenter", () => {
+            gridDiv.classList.add("hover");
+            gridDiv.style.backgroundColor = generateRandomFill();
+          });
+        });
 }
+
+fillGridBackgroundByMovingMouse();
 
 // Making canvas with user size
 
-let userValueBtn = document.querySelector('.userValue');
+let userValueBtn = document.querySelector('.userValueBtn');
 
 let userGridValue;
 
